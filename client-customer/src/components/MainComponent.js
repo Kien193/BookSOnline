@@ -4,6 +4,7 @@ import Inform from './InformComponent';
 import Home from './HomeComponent';
 import Product from './ProductComponent';
 import ProductDetail from './ProductDetailComponent';
+import Signup from './SignupComponent';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 
@@ -19,6 +20,7 @@ class Main extends Component {
           <Route path='/product/category/:cid' element={<Product />} />
           <Route path='/product/search/:keyword' element={<Product />} />
           <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/signup' element={<Signup />} />
         </Routes>
       </div>
     );

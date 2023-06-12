@@ -6,7 +6,7 @@ class Inform extends Component {
     return (
       <div className="border-bottom">
         <div className="float-left">
-          <Link to=''>Login</Link> | <Link to=''>Sign-up</Link> | <Link to=''>Active</Link>
+          <Link to=''>Login</Link> | <Link to='/signup'>Sign-up</Link> | <Link to=''>Active</Link>
         </div>
         <div className="float-right">
           <Link to=''>My cart</Link> have <b>0</b> items
