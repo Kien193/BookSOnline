@@ -22,4 +22,14 @@ router.get('/products/category/:cid', async function (req, res) {
   const products = await ProductDAO.selectByCatID(_cid);
   res.json(products);
 });
+router.get('/products/search/:keyword', async function (req, res) {
+  const keyword = req.params.keyword;
+  const products = await ProductDAO.selectByKeyword(keyword);
+  res.json(products);
+});
+router.get('/products/:id', async function (req, res) {
+  const _id = req.params.id;
+  const product = await ProductDAO.selectByID(_id);
+  res.json(product);
+});
 module.exports = router;
