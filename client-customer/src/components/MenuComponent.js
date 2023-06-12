@@ -12,7 +12,7 @@ class Menu extends Component {
   render() {
     const cates = this.state.categories.map((item) => {
       return (
-        <li key={item._id} className="menu"><Link to=''>{item.name}</Link></li>
+        <li key={item._id} className="menu"><Link to={'/product/category/' + item._id}>{item.name}</Link></li>
       );
     });
     return (

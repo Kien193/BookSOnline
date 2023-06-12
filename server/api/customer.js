@@ -17,4 +17,9 @@ router.get('/products/hot', async function (req, res) {
   const products = await ProductDAO.selectTopHot(3);
   res.json(products);
 });
+router.get('/products/category/:cid', async function (req, res) {
+  const _cid = req.params.cid;
+  const products = await ProductDAO.selectByCatID(_cid);
+  res.json(products);
+});
 module.exports = router;

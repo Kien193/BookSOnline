@@ -50,6 +50,11 @@ const ProductDAO = {
       products.push(product);
     }
     return products;
+  },
+  async selectByCatID(_cid) {
+    const query = { 'category._id': _cid };
+    const products = await Models.Product.find(query).exec();
+    return products;
   }
 };
 module.exports = ProductDAO;
