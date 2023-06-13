@@ -3,8 +3,8 @@ const MyConstants = {
     DB_USER: 'huatrungkien126',
     DB_PASS: 'kien19032002',
     DB_DATABASE: 'shoppeClone',
-    EMAIL_USER: 'kien.207ct65664@vanlanguni.vn', // Microsoft mail service
-    EMAIL_PASS: 'VLU19032002',
+    EMAIL_USER: 'huatrungkien126@gmail.com', // Microsoft mail service
+    EMAIL_PASS: '0938604762Kien',
     JWT_SECRET: '<jwt_secret>',
     JWT_EXPIRES: '3600000', // in milliseconds
   };
