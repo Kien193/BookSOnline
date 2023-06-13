@@ -12,7 +12,7 @@ class Menu extends Component {
             <li className="menu"><Link to='/admin/home'>Home</Link></li>
             <li className="menu"><Link to='/admin/category'>Category</Link></li>
             <li className="menu"><Link to='/admin/product'>Product</Link></li>
-            <li className="menu"><Link to=''>Order</Link></li>
+            <li className="menu"><Link to='/admin/order'>Order</Link></li>
             <li className="menu"><Link to=''>Customer</Link></li>
           </ul>
         </div>

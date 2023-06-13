@@ -6,6 +6,7 @@ const JwtUtil = require('../utils/JwtUtil');
 const AdminDAO = require('../models/adminDAO');
 const CategoryDAO = require('../models/categoryDAO');
 const ProductDAO = require('../models/productDAO');
+const OrderDAO = require('../models/orderDAO');
 // login
 router.post('/login', async function (req, res) {
   const username = req.body.username;
@@ -22,10 +23,12 @@ router.post('/login', async function (req, res) {
     res.json({ success: false, message: 'Please input username and password' });
   }
 });
+
 router.get('/token', JwtUtil.checkToken, function (req, res) {
   const token = req.headers['x-access-token'] || req.headers['authorization'];
   res.json({ success: true, message: 'Token is valid', token: token });
 });
+
 // category
 router.get('/categories', JwtUtil.checkToken, async function (req, res) {
   const categories = await CategoryDAO.selectAll();
@@ -52,6 +55,7 @@ router.delete('/categories/:id', JwtUtil.checkToken, async function (req, res) {
   const result = await CategoryDAO.delete(_id);
   res.json(result);
 });
+
 // product
 router.get('/products', JwtUtil.checkToken, async function (req, res) {
   // get data
@@ -96,6 +100,19 @@ router.put('/products/:id', JwtUtil.checkToken, async function (req, res) {
 router.delete('/products/:id', JwtUtil.checkToken, async function (req, res) {
   const _id = req.params.id;
   const result = await ProductDAO.delete(_id);
+  res.json(result);
+});
+
+// order
+router.get('/orders', JwtUtil.checkToken, async function (req, res) {
+  const orders = await OrderDAO.selectAll();
+  res.json(orders);
+});
+
+router.put('/orders/status/:id', JwtUtil.checkToken, async function (req, res) {
+  const _id = req.params.id;
+  const newStatus = req.body.status;
+  const result = await OrderDAO.update(_id, newStatus);
   res.json(result);
 });
 module.exports = router;
