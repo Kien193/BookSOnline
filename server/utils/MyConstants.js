@@ -7,5 +7,5 @@ const MyConstants = {
     EMAIL_PASS: 'lpoknwqknmmrdwgs',
     JWT_SECRET: '<jwt_secret>',
     JWT_EXPIRES: '3600000', // in milliseconds
-  };
-  module.exports = MyConstants;
+};
+module.exports = MyConstants;
