@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import withRouter from '../utils/withRouter';
+import MyContext from '../contexts/MyContext';
 
 class ProductDetail extends Component {
+  static contextType = MyContext; // using this.context to access global state
   constructor(props) {
     super(props);
     this.state = {
