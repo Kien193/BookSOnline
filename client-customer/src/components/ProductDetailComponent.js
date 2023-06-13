@@ -6,7 +6,8 @@ class ProductDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      txtQuantity: 1
     };
   }
   render() {
@@ -39,11 +40,11 @@ class ProductDetail extends Component {
                     </tr>
                     <tr>
                       <td align="right">Quantity:</td>
-                      <td><input type="number" min="1" max="99" /></td>
+                      <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
                     </tr>
                     <tr>
                       <td></td>
-                      <td><input type="submit" value="ADD TO CART" /></td>
+                      <td><input type="submit" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -54,6 +55,26 @@ class ProductDetail extends Component {
       );
     }
     return (<div />);
+  }
+  // event-handlers
+  btnAdd2CartClick(e) {
+    e.preventDefault();
+    const product = this.state.product;
+    const quantity = parseInt(this.state.txtQuantity);
+    if (quantity) {
+      const mycart = this.context.mycart;
+      const index = mycart.findIndex(x => x.product._id === product._id); // check if the _id exists in mycart
+      if (index === -1) { // not found, push newItem
+        const newItem = { product: product, quantity: quantity };
+        mycart.push(newItem);
+      } else { // increasing the quantity
+        mycart[index].quantity += quantity;
+      }
+      this.context.setMycart(mycart);
+      alert('OK BABY!');
+    } else {
+      alert('Please input quantity');
+    }
   }
   componentDidMount() {
     const params = this.props.params;
