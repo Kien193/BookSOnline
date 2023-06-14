@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,'192.168.101.2', () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 // middleware
