@@ -53,7 +53,7 @@ class Active extends Component {
       if (result) {
         alert("Active successfully!");
       } else {
-        alert("Can't active!");
+        alert("Active failed!");
       }
     });
   }
