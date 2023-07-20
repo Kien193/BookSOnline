@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-
+import swal from 'sweetalert';
 class Active extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +42,12 @@ class Active extends Component {
     if (id && token) {
       this.apiActive(id, token);
     } else {
-      alert('Please input id and token');
+      //alert('Please input id and token');
+      swal({
+        title: "Please input id and token",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
   // apis
@@ -51,9 +56,19 @@ class Active extends Component {
     axios.post('/api/customer/active', body).then((res) => {
       const result = res.data;
       if (result) {
-        alert("Active successfully!");
+        //alert("Active successfully!");
+        swal({
+          title: "Active successfully!",
+          icon: "success",
+          button: "OK",
+        });
       } else {
-        alert("Active failed!");
+        //alert("Active failed!");
+        swal({
+          title: "Active failed!",
+          icon: "warning",
+          button: "OK",
+        });
       }
     });
   }
