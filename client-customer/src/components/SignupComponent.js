@@ -61,7 +61,7 @@ class Signup extends Component {
       const account = { username: username, password: password, name: name, phone: phone, email: email };
       this.apiSignup(account);
     } else {
-      alert('Please input username and password and name and phone and email');
+      alert('Please input username, password, name, phone and email');
     }
   }
   // apis

@@ -86,7 +86,7 @@ class Mycart extends Component {
         this.context.setMycart([]);
         this.props.navigate('/home');
       } else {
-        alert('SORRY BABY!');
+        alert('Checkout failed');
       }
     });
   }
