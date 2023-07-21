@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import MyContext from '../contexts/Mycontext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Login extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -14,26 +15,38 @@ class Login extends Component {
   render() {
     if (this.context.token === '') {
       return (
-        <div className="align-valign-center">
-          <h2 className="text-center">ADMIN LOGIN</h2>
-          <form>
-            <table className="align-center">
-              <tbody>
-                <tr>
-                  <td>Username</td>
-                  <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
-                </tr>
-                <tr>
-                  <td>Password</td>
-                  <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td><input type="submit" value="LOGIN" onClick={(e) => this.btnLoginClick(e)} /></td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
+        <div className="wrapper bg-dark bg-opacity-10 d-flex align-items-center justify-content-center w-100" style={{ height: '100vh' }}>
+          <div className="login-container">
+            <h2 className='mb-3 text-center' style={{ fontSize: '20px' }}>ADMIN LOGIN</h2>
+            <form>
+              <div className="form-group was-validated mb-2">
+                <label>Username</label>
+                <input
+                  type="text"
+                  className="form-control" required
+                  value={this.state.txtUsername}
+                  onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
+                />
+              </div>
+              <div className="form-group was-validated mb-2">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control" required
+                  value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary mt-2 w-100"
+                value="LOGIN" onClick={(e) => this.btnLoginClick(e)}
+              >
+                LOGIN
+              </button>
+
+            </form>
+          </div>
         </div>
       );
     }
