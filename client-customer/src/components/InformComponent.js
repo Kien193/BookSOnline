@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MyContext from '../contexts/MyContext';
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 class Inform extends Component {
   static contextType = MyContext;
   render() {
     return (
-      <div className="border-bottom">
-        <div className="float-left">
-          {this.context.token === '' ?
-            <div><Link to='/login'>Login</Link> | <Link to='/signup'>Sign-up</Link> | <Link to='/active'>Active</Link></div>
-            :
-            <div>Hello <b>{this.context.customer.name}</b> | <Link to='/home' onClick={() => this.lnkLogoutClick()}>Logout</Link> |  <Link to='/myprofile'>My profile</Link> | <Link to='/myorders'>My orders</Link></div>
-          }
-        </div>
-        <div className="float-right">
-          <Link to='/mycart'>My cart</Link> have <b>{this.context.mycart.length}</b> items
-        </div>
-        <div className="float-clear" />
-      </div>
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              {this.context.token === '' ?
+                <Nav.Item>
+                  <Link to='/login' className='non'>Login</Link> | <Link to='/signup' className='non'>Sign-up</Link> | <Link to='/active' className='non'>Active</Link>
+                </Nav.Item>
+                :
+                <NavDropdown title={this.context.customer.name} id="basic-nav-dropdown">
+                  <NavDropdown.Item><Link to='/myprofile' className='non'>My profile</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to='/myorders' className='non'>My orders</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to='/home' className='non' onClick={() => this.lnkLogoutClick()}>Logout</Link></NavDropdown.Item>
+                </NavDropdown>
+              }
+            </Nav>
+            <Nav className="float-right">
+              <Nav.Item><Link to='/mycart' className='non'>My cart</Link> have <b>{this.context.mycart.length}</b> items</Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     );
   }
   // event-handlers

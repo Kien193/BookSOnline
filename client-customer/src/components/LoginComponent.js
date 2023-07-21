@@ -16,7 +16,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="wrapper bg-dark bg-opacity-10 d-flex align-items-center justify-content-center w-100" style={{ height: '100vh' }}>
+      <div className="wrapper bg-opacity-10 d-flex align-items-center justify-content-center w-100" style={{ height: '70vh' }}>
           <div className="login-container">
             <h2 className='mb-3 text-center' style={{ fontSize: '20px' }}>CUSTOMER LOGIN</h2>
             <form>
