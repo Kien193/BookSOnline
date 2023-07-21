@@ -73,6 +73,7 @@ class ProductDetail extends Component {
         mycart[index].quantity += quantity;
       }
       this.context.setMycart(mycart);
+      //this.props.navigate('/home');
       //alert('OK BABY!');
     } else {
       swal('Error', 'Invalid quantity!', 'error');

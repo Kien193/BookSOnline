@@ -91,16 +91,18 @@ class CategoryDetail extends Component {
     })
     .then((willDelete) => {
       const id = this.state.txtID;
-      if (willDelete && id) {
-        this.apiDeleteCategory(id);
-        this.setState({ txtID: '', txtName: '' });
-      } else {
+      if (willDelete) {
+        if (id) {
+          this.apiDeleteCategory(id);
+          this.setState({ txtID: '', txtName: '' });
+        } else {
           swal({
             title: "Please input id",
             icon: "warning",
             button: "OK",
           });
         }
+      }
     });
   }
   // apis

@@ -142,16 +142,18 @@ class ProductDetail extends Component {
       dangerMode: true,
     })
     .then((willDelete) => {
-      const id = this.state.txtID;
-      if (willDelete && id) {
-        this.apiDeleteProduct(id);
-      } else {
+      if (willDelete) {
+        const id = this.state.txtID;
+        if (willDelete && id) {
+          this.apiDeleteProduct(id);
+        } else {
           swal({
             title: "Please input id",
             icon: "warning",
             button: "OK",
           });
         }
+      }
     });
   }
   //Lấy danh mục

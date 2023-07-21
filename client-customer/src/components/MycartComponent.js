@@ -61,24 +61,51 @@ class Mycart extends Component {
     }
   }
   lnkCheckoutClick() {
-    if (window.confirm('ARE YOU SURE?')) {
-      if (this.context.mycart.length > 0) {
-        const total = CartUtil.getTotal(this.context.mycart);
-        const items = this.context.mycart;
-        const customer = this.context.customer;
-        if (customer) {
-          this.apiCheckout(total, items, customer);
+    // if (window.confirm('ARE YOU SURE?')) {
+    //   if (this.context.mycart.length > 0) {
+    //     const total = CartUtil.getTotal(this.context.mycart);
+    //     const items = this.context.mycart;
+    //     const customer = this.context.customer;
+    //     if (customer) {
+    //       this.apiCheckout(total, items, customer);
+    //     } else {
+    //       this.props.navigate('/login');
+    //     }
+    //   } else {
+    //     swal({
+    //       title: "Your cart is empty",
+    //       icon: "warning",
+    //       button: "OK",
+    //     });
+    //   }
+    // }
+    swal({
+      title: "Are you sure?",
+      text: "Once checkout, you will not be able to redo this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willCheckout) => {
+      if (willCheckout) {
+        if (this.context.mycart.length > 0) {
+          const total = CartUtil.getTotal(this.context.mycart);
+          const items = this.context.mycart;
+          const customer = this.context.customer;
+          if (customer) {
+            this.apiCheckout(total, items, customer);
+          } else {
+            this.props.navigate('/login');
+          }
         } else {
-          this.props.navigate('/login');
+          swal({
+            title: "Your cart is empty",
+            icon: "warning",
+            button: "OK",
+          });
         }
-      } else {
-        swal({
-          title: "Your cart is empty",
-          icon: "warning",
-          button: "OK",
-        });
       }
-    }
+    });
   }
   // apis
   apiCheckout(total, items, customer) {
