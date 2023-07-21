@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import MyContext from '../contexts/Mycontext';
-//import PreLoader from "./PreLoader";
+import swal from 'sweetalert';
 
 class ProductDetail extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -53,7 +53,7 @@ class ProductDetail extends Component {
               <tr>
                 <td></td>
                 <td>
-                  <input type="submit" value="ADD NEW" onClick={(e) => this.btnAddClick(e)} />
+                  <input type="submit" value="ADD" onClick={(e) => this.btnAddClick(e)} />
                   <input type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
                   <input type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
                 </td>
@@ -92,6 +92,7 @@ class ProductDetail extends Component {
       reader.readAsDataURL(file);
     }
   }
+  //Sự kiện thêm sản phẩm
   btnAddClick(e) {
     e.preventDefault();
     const name = this.state.txtName;
@@ -102,9 +103,15 @@ class ProductDetail extends Component {
       const prod = { name: name, price: price, category: category, image: image };
       this.apiPostProduct(prod);
     } else {
-      alert('Please input name and price and category and image');
+      //alert('Please input name and price and category and image');
+      swal({
+        title: "Please input name, price, category and image",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
+  //Sự kiện cập nhật sản phẩm
   btnUpdateClick(e) {
     e.preventDefault();
     const id = this.state.txtID;
@@ -116,21 +123,38 @@ class ProductDetail extends Component {
       const prod = { name: name, price: price, category: category, image: image };
       this.apiPutProduct(id, prod);
     } else {
-      alert('Please input id and name and price and category and image');
+      //alert('Please input id and name and price and category and image');
+      swal({
+        title: "Please input id, name, price, category and image",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
+  //Sự kiện xóa sản phẩm
   btnDeleteClick(e) {
     e.preventDefault();
-    if (window.confirm('ARE YOU SURE?')) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
       const id = this.state.txtID;
-      if (id) {
+      if (willDelete && id) {
         this.apiDeleteProduct(id);
       } else {
-        alert('Please input id');
-      }
-    }
+          swal({
+            title: "Please input id",
+            icon: "warning",
+            button: "OK",
+          });
+        }
+    });
   }
-  // apis
+  //Lấy danh mục
   apiGetCategories() {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.get('/api/admin/categories', config).then((res) => {
@@ -138,19 +162,24 @@ class ProductDetail extends Component {
       this.setState({ categories: result });
     });
   }
- 
+  //Thêm sản phẩm
   apiPostProduct(prod) {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.post('/api/admin/products', prod, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        swal("Added successfully!", {
+          icon: "success",
+        });
         this.apiGetProducts();
       } else {
-        alert('SORRY BABY!');
+        swal("Added failed", {
+          icon: "error",
+        });
       }
     });
   }
+  //Lấy sản phẩm
   apiGetProducts() {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.get('/api/admin/products?page=' + this.props.curPage, config).then((res) => {
@@ -166,27 +195,37 @@ class ProductDetail extends Component {
       }
     });
   }
+  //Cập nhật sản phẩm
   apiPutProduct(id, prod) {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.put('/api/admin/products/' + id, prod, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        swal("Update successfully!", {
+          icon: "success",
+        });
         this.apiGetProducts();
       } else {
-        alert('SORRY BABY!');
+        swal("Update failed", {
+          icon: "error",
+        });
       }
     });
   }
+  //Xóa sản phẩm
   apiDeleteProduct(id) {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.delete('/api/admin/products/' + id, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        swal("Deleted successfully!", {
+          icon: "success",
+        });
         this.apiGetProducts();
       } else {
-        alert('SORRY BABY!');
+        swal("Deleted failed", {
+          icon: "error",
+        });
       }
     });
   }

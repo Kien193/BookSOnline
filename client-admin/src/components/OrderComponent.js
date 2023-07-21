@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import MyContext from '../contexts/Mycontext';
-
+import swal from 'sweetalert';
 class Order extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -114,7 +114,12 @@ class Order extends Component {
       if (result) {
         this.apiGetOrders();
       } else {
-        alert('SORRY BABY!');
+        //alert('SORRY BABY!');
+        swal({
+          title: "Error",
+          icon: "warning",
+          button: "OK",
+        });
       }
     });
   }

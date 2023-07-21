@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import MyContext from '../contexts/Mycontext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import swal from 'sweetalert';
 
 class Login extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -61,7 +62,12 @@ class Login extends Component {
       const account = { username: username, password: password };
       this.apiLogin(account);
     } else {
-      alert('Please input username and password');
+      //alert('Please input username and password');
+      swal({
+        title: "Please input username and password",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
   // apis
@@ -72,7 +78,12 @@ class Login extends Component {
         this.context.setToken(result.token);
         this.context.setUsername(account.username);
       } else {
-        alert(result.message);
+        //alert(result.message);
+        swal({
+          title: "Username and password incorrect",
+          icon: "warning",
+          button: "OK",
+        });
       }
     });
   }

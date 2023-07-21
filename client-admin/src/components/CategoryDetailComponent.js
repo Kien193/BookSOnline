@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import MyContext from '../contexts/Mycontext';
 import axios from 'axios';
-
+import swal from 'sweetalert';
 class CategoryDetail extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -30,7 +30,7 @@ class CategoryDetail extends Component {
               <tr>
                 <td></td>
                 <td>
-                  <input type="submit" value="ADD NEW" onClick={(e) => this.btnAddClick(e)} />
+                  <input type="submit" value="ADD" onClick={(e) => this.btnAddClick(e)} />
                   <input type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
                   <input type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
                 </td>
@@ -47,6 +47,7 @@ class CategoryDetail extends Component {
     }
   }
   // event-handlers
+  //Sự kiện thêm danh mục
   btnAddClick(e) {
     e.preventDefault();
     const name = this.state.txtName;
@@ -55,9 +56,14 @@ class CategoryDetail extends Component {
       this.apiPostCategory(cate);
       this.setState({ txtID: '', txtName: '' });
     } else {
-      alert('Please input name');
+      swal({
+        title: "Please input name",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
+  //Sự kiện cập nhật danh mục
   btnUpdateClick(e) {
     e.preventDefault();
     const id = this.state.txtID;
@@ -66,34 +72,56 @@ class CategoryDetail extends Component {
       const cate = { name: name };
       this.apiPutCategory(id, cate);
     } else {
-      alert('Please input id and name');
+      swal({
+        title: "Please input id and name",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
+  //Sự kiện xoá danh mục
   btnDeleteClick(e) {
     e.preventDefault();
-    if (window.confirm('ARE YOU SURE?')) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
       const id = this.state.txtID;
-      if (id) {
+      if (willDelete && id) {
         this.apiDeleteCategory(id);
         this.setState({ txtID: '', txtName: '' });
       } else {
-        alert('Please input id');
-      }
-    }
+          swal({
+            title: "Please input id",
+            icon: "warning",
+            button: "OK",
+          });
+        }
+    });
   }
   // apis
+  //Thêm danh mục
   apiPostCategory(cate) {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.post('/api/admin/categories', cate, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        swal("Added successfully!", {
+          icon: "success",
+        });
         this.apiGetCategories();
       } else {
-        alert('SORRY BABY!');
+        swal("Added failed", {
+          icon: "error",
+        });
       }
     });
   }
+  //Lấy danh mục
   apiGetCategories() {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.get('/api/admin/categories', config).then((res) => {
@@ -101,27 +129,37 @@ class CategoryDetail extends Component {
       this.props.updateCategories(result);
     });
   }
+  //Cập nhật danh mục
   apiPutCategory(id, cate) {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.put('/api/admin/categories/' + id, cate, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        swal("Update successfully!", {
+          icon: "success",
+        });
         this.apiGetCategories();
       } else {
-        alert('SORRY BABY!');
+        swal("Update failed", {
+          icon: "error",
+        });
       }
     });
   }
+  //Xoá danh mục
   apiDeleteCategory(id) {
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.delete('/api/admin/categories/' + id, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
+        swal("Deleted successfully!", {
+          icon: "success",
+        });
         this.apiGetCategories();
       } else {
-        alert('SORRY BABY!');
+        swal("Deleted failed", {
+          icon: "error",
+        });
       }
     });
   }
