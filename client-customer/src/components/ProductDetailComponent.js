@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import withRouter from '../utils/withRouter';
 import MyContext from '../contexts/MyContext';
-
+import swal from 'sweetalert';
 class ProductDetail extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -75,7 +75,7 @@ class ProductDetail extends Component {
       this.context.setMycart(mycart);
       //alert('OK BABY!');
     } else {
-      alert('Please input quantity');
+      swal('Error', 'Invalid quantity!', 'error');
     }
   }
   componentDidMount() {

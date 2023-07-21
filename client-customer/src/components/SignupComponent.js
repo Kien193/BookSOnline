@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-
+import swal from 'sweetalert';
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +61,11 @@ class Signup extends Component {
       const account = { username: username, password: password, name: name, phone: phone, email: email };
       this.apiSignup(account);
     } else {
-      alert('Please input username, password, name, phone and email');
+      swal({
+        title: "Please input username, password, name, phone and email",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
   // apis

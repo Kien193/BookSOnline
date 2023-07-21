@@ -3,6 +3,7 @@ import MyContext from '../contexts/MyContext';
 import CartUtil from '../utils/CartUtil';
 import axios from 'axios';
 import withRouter from '../utils/withRouter';
+import swal from 'sweetalert';
 
 class Mycart extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -71,7 +72,11 @@ class Mycart extends Component {
           this.props.navigate('/login');
         }
       } else {
-        alert('Your cart is empty');
+        swal({
+          title: "Your cart is empty",
+          icon: "warning",
+          button: "OK",
+        });
       }
     }
   }
@@ -82,7 +87,6 @@ class Mycart extends Component {
     axios.post('/api/customer/checkout', body, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert('OK BABY!');
         this.context.setMycart([]);
         this.props.navigate('/home');
       } else {

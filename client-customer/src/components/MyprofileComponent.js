@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Navigate } from 'react-router-dom';
 import MyContext from '../contexts/MyContext';
-
+import swal from 'sweetalert';
 class Myprofile extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -76,7 +76,11 @@ class Myprofile extends Component {
       const customer = { username: username, password: password, name: name, phone: phone, email: email };
       this.apiPutCustomer(this.context.customer._id, customer);
     } else {
-      alert('Please input username and password and name and phone and email');
+      swal({
+        title: "Please input username, password, name, phone and email",
+        icon: "warning",
+        button: "OK",
+      });
     }
   }
   // apis
@@ -85,10 +89,18 @@ class Myprofile extends Component {
     axios.put('/api/customer/customers/' + id, customer, config).then((res) => {
       const result = res.data;
       if (result) {
-        alert("Updated successfully");
+        swal({
+          title: "Updated successfully",
+          icon: "success",
+          button: "OK",
+        });
         this.context.setCustomer(result);
       } else {
-        alert("Update failed");
+        swal({
+          title: "Update failed",
+          icon: "error",
+          button: "OK",
+        });
       }
     });
   }
