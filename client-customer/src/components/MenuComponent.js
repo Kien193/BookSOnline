@@ -72,6 +72,7 @@ class Menu extends Component {
     } else {
       //not found return to home page
       this.props.navigate('/home');
+      //maybe show a message "not found"
     }
   }
   
