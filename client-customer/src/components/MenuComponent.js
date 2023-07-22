@@ -76,7 +76,9 @@ class Menu extends Component {
     const keyword = this.state.txtKeyword.trim();
     if (keyword !== '') {
       this.props.navigate('/product/search/' + this.state.txtKeyword);
-    } else {}
+    } else {
+      
+    }
   }
 }
 export default withRouter(Menu);

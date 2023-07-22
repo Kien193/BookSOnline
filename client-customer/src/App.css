@@ -97,3 +97,13 @@ tr:not(:first-child):hover.datatable {
   color: black;
   text-align: center;
 }
+
+.rows {
+  margin-bottom: 2.5rem;
+}
+
+
+ul.list-unstyled li:hover {
+  color: #ff6a00; /* Thay đổi màu chữ khi hover vào */
+  cursor: pointer; /* Thay đổi hình con trỏ chuột khi hover vào */
+}
