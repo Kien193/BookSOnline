@@ -20,6 +20,7 @@ class Product extends Component {
         <tr key={item._id} className="datatable" onClick={() => this.trItemClick(item)}>
           <td>{item._id}</td>
           <td>{item.name}</td>
+          <td>{item.author}</td>
           <td>{item.price}</td>
           <td>{new Date(item.cdate).toLocaleString()}</td>
           <td>{item.category.name}</td>
@@ -43,6 +44,8 @@ class Product extends Component {
               <tr className="datatable">
                 <th>ID</th>
                 <th>Name</th>
+                {/* add author */}
+                <th>Author</th>
                 <th>Price</th>
                 <th>Creation date</th>
                 <th>Category</th>

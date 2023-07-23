@@ -76,12 +76,14 @@ router.get('/products', JwtUtil.checkToken, async function (req, res) {
 
 router.post('/products', JwtUtil.checkToken, async function (req, res) {
   const name = req.body.name;
+  //add author
+  const author = req.body.author;
   const price = req.body.price;
   const cid = req.body.category;
   const image = req.body.image;
   const now = new Date().getTime(); // milliseconds
   const category = await CategoryDAO.selectByID(cid);
-  const product = { name: name, price: price, image: image, cdate: now, category: category };
+  const product = { name: name, author: author, price: price, image: image, cdate: now, category: category };
   const result = await ProductDAO.insert(product);
   res.json(result);
 });

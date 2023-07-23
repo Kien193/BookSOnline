@@ -25,6 +25,7 @@ class Mycart extends Component {
               alt=""
             />
           </td>
+          <td>{item.product.author}</td>
           <td>{item.product.price}</td>
           <td>{item.quantity}</td>
           <td>{item.product.price * item.quantity}</td>
@@ -51,6 +52,7 @@ class Mycart extends Component {
               <th className="width_item">Category</th>
               <th className="width_item">Name</th>
               <th className="width_item">Image</th>
+              <th className="width_item">Author</th>
               <th className="width_item">Price</th>
               <th className="width_item">Quantity</th>
               <th className="width_item">Amount</th>

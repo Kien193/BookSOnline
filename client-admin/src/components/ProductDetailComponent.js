@@ -11,6 +11,7 @@ class ProductDetail extends Component {
       categories: [],
       txtID: '',
       txtName: '',
+      txtAuthor: '',
       txtPrice: 0,
       cmbCategory: '',
       imgProduct: '',
@@ -37,6 +38,10 @@ class ProductDetail extends Component {
               <tr>
                 <td>Name</td>
                 <td><input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} /></td>
+              </tr>
+              <tr>
+                <td>Author</td>
+                <td><input type="text" value={this.state.txtAuthor} onChange={(e) => { this.setState({ txtAuthor: e.target.value }) }} /></td>
               </tr>
               <tr>
                 <td>Price</td>
@@ -75,6 +80,7 @@ class ProductDetail extends Component {
       this.setState({
         txtID: this.props.item._id,
         txtName: this.props.item.name,
+        txtAuthor: this.props.item.author,
         txtPrice: this.props.item.price,
         cmbCategory: this.props.item.category._id,
         imgProduct: 'data:image/jpg;base64,' + this.props.item.image
@@ -96,11 +102,12 @@ class ProductDetail extends Component {
   btnAddClick(e) {
     e.preventDefault();
     const name = this.state.txtName;
+    const author = this.state.txtAuthor;
     const price = parseInt(this.state.txtPrice);
     const category = this.state.cmbCategory;
     const image = this.state.imgProduct.replace(/^data:image\/[a-z]+;base64,/, ''); // remove "data:image/...;base64,"
     if (name && price && category && image) {
-      const prod = { name: name, price: price, category: category, image: image };
+      const prod = { name: name, author: author,price: price, category: category, image: image };
       this.apiPostProduct(prod);
     } else {
       //alert('Please input name and price and category and image');
@@ -116,11 +123,12 @@ class ProductDetail extends Component {
     e.preventDefault();
     const id = this.state.txtID;
     const name = this.state.txtName;
+    const author = this.state.txtAuthor;
     const price = parseInt(this.state.txtPrice);
     const category = this.state.cmbCategory;
     const image = this.state.imgProduct.replace(/^data:image\/[a-z]+;base64,/, ''); // remove "data:image/...;base64,"
     if (id && name && price && category && image) {
-      const prod = { name: name, price: price, category: category, image: image };
+      const prod = { name: name, author: author, price: price, category: category, image: image };
       this.apiPutProduct(id, prod);
     } else {
       //alert('Please input id and name and price and category and image');

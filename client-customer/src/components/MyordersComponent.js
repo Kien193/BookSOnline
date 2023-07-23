@@ -34,6 +34,7 @@ class Myorders extends Component {
             <td>{item.product._id}</td>
             <td>{item.product.name}</td>
             <td><img src={"data:image/jpg;base64," + item.product.image} width="70px" height="70px" alt="" /></td>
+            <td>{item.product.author}</td>
             <td>{item.product.price}</td>
             <td>{item.quantity}</td>
             <td>{item.product.price * item.quantity}</td>
@@ -69,6 +70,7 @@ class Myorders extends Component {
                   <th>Prod.ID</th>
                   <th>Prod.name</th>
                   <th>Image</th>
+                  <th>Author</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Amount</th>
