@@ -69,6 +69,7 @@ input.keyword {
 .datatable {
   text-align: center;
   border-collapse: collapse;
+  vertical-align: middle;
 }
 /* header */
 tr:first-child.datatable {

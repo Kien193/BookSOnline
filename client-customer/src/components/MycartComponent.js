@@ -5,7 +5,7 @@ import axios from "axios";
 import withRouter from "../utils/withRouter";
 import swal from "sweetalert";
 import Button from 'react-bootstrap/Button';
-
+//import Table from 'react-bootstrap/Table';
 
 class Mycart extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -44,7 +44,7 @@ class Mycart extends Component {
       <div className="align-center">
         <h2 className="text-center">ITEM LIST</h2>
         {/* <table className="datatable" border="1"> */}
-        <table striped bordered hover>
+        <table striped bordered hover className="datatable">
           <tbody>
             <tr className="datatable">
               <th className="width_item">No.</th>
@@ -60,7 +60,7 @@ class Mycart extends Component {
             </tr>
             {mycart}
             <tr>
-              <td colSpan="6"></td>
+              <td colSpan="7"></td>
               <td>Total</td>
               <td>{CartUtil.getTotal(this.context.mycart)}</td>
               <td>
