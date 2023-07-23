@@ -23,6 +23,8 @@ const CustomerSchema = mongoose.Schema({
 const ProductSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   name: String,
+  //add author
+  author: String,
   price: Number,
   image: String,
   cdate: Number,
