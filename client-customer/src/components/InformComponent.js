@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
 import axios from 'axios';
+//import { BsFillCartFill } from "react-icons/bs";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+
 class Inform extends Component {
   static contextType = MyContext;
   constructor(props) {
@@ -25,7 +27,7 @@ class Inform extends Component {
       );
     });
     return (
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -36,7 +38,20 @@ class Inform extends Component {
               </NavDropdown>
             </Nav>
             <Nav className="float-right">
-              <Nav.Item><Link to='/mycart' className='non'>My cart</Link> have <b>{this.context.mycart.length}</b> items</Nav.Item>
+              {/* <Nav.Item>
+                <i className="bi bi-cart-fill me-1"></i>
+                <Link to='/mycart' className='non'>My cart</Link> have <b>{this.context.mycart.length}</b> items
+              </Nav.Item> */}
+              <form className="d-flex">
+                <Link to='/mycart' className='non'>
+                  <i className='bi bi-cart-fill me-1 '>
+                    <button className="btn btn-outline-dark" type="submit">
+                      Cart
+                      <span className="badge bg-dark text-white ms-1 rounded-pill">{this.context.mycart.length}</span>
+                    </button>
+                  </i>
+                </Link>
+              </form>
             </Nav>
           </Navbar.Collapse>
         </Container>

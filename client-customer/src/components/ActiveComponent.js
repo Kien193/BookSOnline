@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import swal from 'sweetalert';
+import { Link } from 'react-router-dom';
 class Active extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +42,7 @@ class Active extends Component {
     const token = this.state.txtToken;
     if (id && token) {
       this.apiActive(id, token);
+      //<Link to='/login' className='non'>Login</Link> ??????????????????
     } else {
       //alert('Please input id and token');
       swal({
