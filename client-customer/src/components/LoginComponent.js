@@ -4,6 +4,7 @@ import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
 import swal from 'sweetalert';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -45,6 +46,13 @@ class Login extends Component {
               >
                 LOGIN
               </button>
+              <Link to='/active' className='non'>
+                <button
+                  type="submit"
+                  className="btn mt-2 w-100 bg-success text-white"
+                  value="ACTIVE"
+                > ACTIVE </button>
+              </Link>
 
             </form>
           </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import withRouter from '../utils/withRouter';
 import MyContext from '../contexts/MyContext';
-
+import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -20,7 +20,7 @@ class Menu extends Component {
   }
   render() {
     return (
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="">
         <Container>
           <Navbar.Brand>
             <img
@@ -48,7 +48,7 @@ class Menu extends Component {
             <Nav className="float-right">
               {this.context.token === '' ?
                 <Nav.Item>
-                  <Link to='/login' className='non'>Login</Link> | <Link to='/signup' className='non'>Sign-up</Link> | <Link to='/active' className='non'>Active</Link>
+                  <Link to='/login' className='non'>Login</Link> | <Link to='/signup' className='non'>Sign-up</Link>
                 </Nav.Item>
                 :
                 <NavDropdown title={this.context.customer.name} id="basic-nav-dropdown">
@@ -80,6 +80,17 @@ class Menu extends Component {
     this.context.setToken('');
     this.context.setCustomer(null);
     this.context.setMycart([]);
+  }
+
+  componentDidMount() {
+    this.apiGetCategories();
+  }
+  // apis
+  apiGetCategories() {
+    axios.get('/api/customer/categories').then((res) => {
+      const result = res.data;
+      this.setState({ categories: result });
+    });
   }
 }
 export default withRouter(Menu);

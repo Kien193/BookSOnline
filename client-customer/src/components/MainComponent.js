@@ -12,12 +12,14 @@ import Myprofile from './MyprofileComponent';
 import Mycart from './MycartComponent';
 import Myorders from './MyordersComponent';
 import Footer from './FooterComponent';
+import Header from './HeaderComponent';
 class Main extends Component {
   render() {
     return (
       <div className="body-customer">
         <Menu />
         <Inform />
+        <Header />
         <Routes>
           <Route path='/' element={<Navigate replace to='/home' />} />
           <Route path='/home' element={<Home />} />
