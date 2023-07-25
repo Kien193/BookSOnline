@@ -105,6 +105,6 @@ tr:not(:first-child):hover.datatable {
 
 
 ul.list-unstyled li:hover {
-  color: #ff6a00; /* Thay đổi màu chữ khi hover vào */
+  color: #198754; /* Thay đổi màu chữ khi hover vào */
   cursor: pointer; /* Thay đổi hình con trỏ chuột khi hover vào */
 }

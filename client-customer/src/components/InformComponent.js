@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import MyContext from '../contexts/MyContext';
 import withRouter from '../utils/withRouter';
 import axios from 'axios';
-//import { BsFillCartFill } from "react-icons/bs";
+import { BsFillCartFill } from "react-icons/bs";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -45,8 +45,8 @@ class Inform extends Component {
               <form className="d-flex">
                 <Link to='/mycart' className='non'>
                   <i className='bi bi-cart-fill me-1 '>
-                    <button className="btn btn-outline-dark" type="submit">
-                      Cart
+                  <button className="btn btn-outline-dark d-flex align-items-center justify-content-between" type="submit">
+                      <BsFillCartFill /> <span className='ms-2'>Cart</span>
                       <span className="badge bg-dark text-white ms-1 rounded-pill">{this.context.mycart.length}</span>
                     </button>
                   </i>

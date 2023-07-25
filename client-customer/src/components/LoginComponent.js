@@ -18,45 +18,45 @@ class Login extends Component {
   render() {
     return (
       <div className="wrapper bg-opacity-10 d-flex align-items-center justify-content-center w-100" style={{ height: '70vh' }}>
-          <div className="login-container">
-            <h2 className='mb-3 text-center' style={{ fontSize: '20px' }}>CUSTOMER LOGIN</h2>
-            <form>
-              <div className="form-group was-validated mb-2">
-                <label>Username</label>
-                <input
-                  type="text"
-                  className="form-control" required
-                  value={this.state.txtUsername}
-                  onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
-                />
-              </div>
-              <div className="form-group was-validated mb-2">
-                <label>Password</label>
-                <input
-                  type="password"
-                  className="form-control" required
-                  value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }}
-                />
-              </div>
-
+        <div className="login-container">
+          <h2 className='mb-3 text-center' style={{ fontSize: '20px' }}>CUSTOMER LOGIN</h2>
+          <form>
+            <div className="form-group was-validated mb-2">
+              <label>Username</label>
+              <input
+                type="text"
+                className="form-control" required
+                value={this.state.txtUsername}
+                onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
+              />
+            </div>
+            <div className="form-group was-validated mb-2">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control" required
+                value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary mt-2 w-100"
+              value="LOGIN" onClick={(e) => this.btnLoginClick(e)}
+            >
+              LOGIN
+            </button>
+            <Link to='/active' className='non'>
               <button
                 type="submit"
-                className="btn btn-primary mt-2 w-100"
-                value="LOGIN" onClick={(e) => this.btnLoginClick(e)}
+                className="btn mt-2 w-100 bg-success text-white"
+                value="ACTIVE"
               >
-                LOGIN
+                ACTIVE
               </button>
-              <Link to='/active' className='non'>
-                <button
-                  type="submit"
-                  className="btn mt-2 w-100 bg-success text-white"
-                  value="ACTIVE"
-                > ACTIVE </button>
-              </Link>
-
-            </form>
-          </div>
+            </Link>
+          </form>
         </div>
+      </div>
     );
   }
   // event-handlers
@@ -83,6 +83,13 @@ class Login extends Component {
       if (result.success === true) {
         this.context.setToken(result.token);
         this.context.setCustomer(result.customer);
+        swal({
+          title: "Login successfully",
+          icon: "success",
+          button: "OK",
+        }).then(() =>{
+          this.props.navigate('/home');
+        });
         this.props.navigate('/home');
       } else {
         // alert(result.message);

@@ -6,6 +6,7 @@ import withRouter from "../utils/withRouter";
 import swal from "sweetalert";
 import Button from 'react-bootstrap/Button';
 //import Table from 'react-bootstrap/Table';
+import { BsCheck2Circle } from 'react-icons/bs';
 
 class Mycart extends Component {
   static contextType = MyContext; // using this.context to access global state
@@ -44,7 +45,7 @@ class Mycart extends Component {
       <div className="align-center">
         <h2 className="text-center">ITEM LIST</h2>
         {/* <table className="datatable" border="1"> */}
-        <table striped bordered hover className="datatable">
+        <table striped bordered hover className="datatable" border="1">
           <tbody>
             <tr className="datatable">
               <th className="width_item">No.</th>
@@ -59,16 +60,20 @@ class Mycart extends Component {
               <th className="width_item">Action</th>
             </tr>
             {mycart}
+            {this.context.mycart.length > 0 ?  
             <tr>
               <td colSpan="7"></td>
               <td>Total</td>
               <td>{CartUtil.getTotal(this.context.mycart)}</td>
               <td>
-                <button className="link" onClick={() => this.lnkCheckoutClick()}>
-                  CHECKOUT
-                </button>
+                <Button className="checkout-1 link d-flex align-items-center justify-content-between border border-success rounded btn btn-outline success bg-success text-white" onClick={() => this.lnkCheckoutClick()}>
+                  <BsCheck2Circle /> <span className='ms-1'>CheckOut</span>
+                </Button>
               </td>
             </tr>
+            : 
+            <tr><td colSpan="10">No data</td></tr>
+            }
           </tbody>
         </table>
       </div>

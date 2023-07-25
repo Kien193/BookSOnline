@@ -1,5 +1,5 @@
 const MyConstants = {
-    DB_SERVER: 'shoppeclone.w14pp4b.mongodb.net',
+    DB_SERVER: 'BookSOnline.w14pp4b.mongodb.net',
     DB_USER: 'huatrungkien126',
     DB_PASS: 'kien19032002',
     DB_DATABASE: 'shoppeClone',
