@@ -38,7 +38,7 @@ class Menu extends Component {
         <header>
           <div className="image-text">
             <span className="image">
-              {/* <img src="logo.png" alt=""> */}
+              <img src="https://i.imgur.com/8Km9tLL.jpg" alt="logo" />
             </span>
             <div className="text logo-text">
               <span className="name">BookSOnline</span>
