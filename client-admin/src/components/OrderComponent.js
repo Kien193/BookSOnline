@@ -46,10 +46,10 @@ class Order extends Component {
       });
     }
     return (
-      <div>
-        <div className="align-center">
+      <div className='container'>
+        <div className="container row mt-5">
           <h2 className="text-center">ORDER LIST</h2>
-          <table className="datatable" border="1">
+          <table className="table table-bordered" border="1">
             <tbody>
               <tr className="datatable">
                 <th>ID</th>
@@ -67,7 +67,7 @@ class Order extends Component {
         {this.state.order ?
           <div className="align-center">
             <h2 className="text-center">ORDER DETAIL</h2>
-            <table className="datatable" border="1">
+            <table className="table table-bordered" border="1">
               <tbody>
                 <tr className="datatable">
                   <th>No.</th>
