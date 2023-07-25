@@ -22,7 +22,7 @@ class Menu extends Component {
     return (
       <Navbar expand="lg" className="">
         <Container>
-          <Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
             <img
               alt=""
               src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149342941.jpg?w=2000"
@@ -35,7 +35,7 @@ class Menu extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto"></Nav> {/* khoảng trống*/}
-            <Form className="d-flex align-middle">
+            <Form className="d-flex align-middle object-fit-contain">
               <Form.Control
                 type="search"
                 placeholder="Search"

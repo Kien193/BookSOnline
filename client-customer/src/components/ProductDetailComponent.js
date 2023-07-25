@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import withRouter from '../utils/withRouter';
 import MyContext from '../contexts/MyContext';
 import swal from 'sweetalert';
+
 class ProductDetail extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -19,34 +20,32 @@ class ProductDetail extends Component {
         <div className="align-center">
           <h2 className="text-center">PRODUCT DETAILS</h2>
           <figure className="caption-right">
-            <img src={"data:image/jpg;base64," + prod.image} width="400px" height="400px" alt="" />
+            <img src={"data:image/jpg;base64," + prod.image} width="600px" height="600px" alt="" />
             <figcaption>
               <form>
                 <table>
                   <tbody>
                     <tr>
-                      <td align="right">ID:</td>
-                      <td>{prod._id}</td>
+                      <td>ID: {prod._id}</td>
                     </tr>
                     <tr>
-                      <td align="right">Name:</td>
-                      <td>{prod.name}</td>
+                      {/* <td align="right">Name:</td> */}
+                      <h1>{prod.name}</h1>
                     </tr>
                     <tr>
-                      <td align="right">Price:</td>
-                      <td>{prod.price}</td>
+                      <h4>{prod.price}$</h4>
                     </tr>
                     <tr>
-                      <td align="right">Category:</td>
-                      <td>{prod.category.name}</td>
+                      <h4 class='fw-bold'>{prod.category.name}</h4>
                     </tr>
                     <tr>
-                      <td align="right">Quantity:</td>
-                      <td><input type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} /></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td><input type="submit" value="ADD TO CART" onClick={(e) => this.btnAdd2CartClick(e)} /></td>
+                      <div class='d-flex'>
+                        <input className='form-control text-center me-3' type="number" min="1" max="99" value={this.state.txtQuantity} onChange={(e) => { this.setState({ txtQuantity: e.target.value }) }} />
+                        
+                        <button className="btn btn-outline-dark " type="submit" onClick={(e) => this.btnAdd2CartClick(e)}>
+                          Add to cart
+                        </button>
+                      </div>
                     </tr>
                   </tbody>
                 </table>
@@ -63,7 +62,7 @@ class ProductDetail extends Component {
     e.preventDefault();
     const product = this.state.product;
     const quantity = parseInt(this.state.txtQuantity);
-    if (quantity) {
+    if (quantity < 100) {
       const mycart = this.context.mycart;
       const index = mycart.findIndex(x => x.product._id === product._id); // check if the _id exists in mycart
       if (index === -1) { // not found, push newItem

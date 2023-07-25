@@ -18,38 +18,65 @@ class Myprofile extends Component {
   render() {
     if (this.context.token === '') return (<Navigate replace to='/login' />);
     return (
-      <div className="align-center">
-        <h2 className="text-center">MY PROFILE</h2>
-        <form>
-          <table className="align-center">
-            <tbody>
-              <tr>
-                <td>Username</td>
-                <td><input type="text" value={this.state.txtUsername} onChange={(e) => { this.setState({ txtUsername: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Password</td>
-                <td><input type="password" value={this.state.txtPassword} onChange={(e) => { this.setState({ txtPassword: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Name</td>
-                <td><input type="text" value={this.state.txtName} onChange={(e) => { this.setState({ txtName: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Phone</td>
-                <td><input type="tel" value={this.state.txtPhone} onChange={(e) => { this.setState({ txtPhone: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td>Email</td>
-                <td><input type="email" value={this.state.txtEmail} onChange={(e) => { this.setState({ txtEmail: e.target.value }) }} /></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td><input type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} /></td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+      <div className="wrapper bg-opacity-10 d-flex align-items-center justify-content-center w-100" style={{ height: '70vh' }}>
+        <div className="login-container">
+          <h2 className='mb-3 text-center' style={{ fontSize: '20px' }}>SIGN UP</h2>
+          <form>
+            <div className="form-group was-validated mb-2">
+              <label>Username</label>
+              <input
+                type="text"
+                className="form-control" required
+                value={this.state.txtUsername}
+                onChange={(e) => { this.setState({ txtUsername: e.target.value }) }}
+              />
+            </div>
+            <div className="form-group was-validated mb-2">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control" required
+                value={this.state.txtPassword} 
+                onChange={(e) => { this.setState({ txtPassword: e.target.value }) }}
+              />
+            </div>
+            <div className="form-group was-validated mb-2">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control" required
+                value={this.state.txtName} 
+                onChange={(e) => { this.setState({ txtName: e.target.value }) }}
+              />
+            </div>
+            <div className="form-group was-validated mb-2">
+              <label>Phone</label>
+              <input
+                type="text"
+                className="form-control" required
+                value={this.state.txtPhone} 
+                onChange={(e) => { this.setState({ txtPhone: e.target.value }) }}
+              />
+            </div>
+            <div className="form-group was-validated mb-2">
+              <label>Email</label>
+              <input
+                type="text"
+                className="form-control" required
+                value={this.state.txtEmail} 
+                onChange={(e) => { this.setState({ txtEmail: e.target.value }) }}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary mt-2 w-100"
+              value="LOGIN" 
+              onClick={(e) => this.btnUpdateClick(e)}
+            >
+              Update
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

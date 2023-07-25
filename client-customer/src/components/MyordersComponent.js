@@ -41,39 +41,39 @@ class Myorders extends Component {
           </tr>
         );
       });
-    }
+    } 
     return (
       <div>
         <div className="align-center">
           <h2 className="text-center">ORDER LIST</h2>
-          <table className="datatable" border="1">
+          <table striped bordered hover className="datatable" border="1">
             <tbody>
               <tr className="datatable">
-                <th>ID</th>
-                <th>Creation date</th>
-                <th>Cust.name</th>
-                <th>Cust.phone</th>
-                <th>Total</th>
-                <th>Status</th>
+                <th className="width_item">ID</th>
+                <th className="width_item">Creation date</th>
+                <th className="width_item">Cust.name</th>
+                <th className="width_item">Cust.phone</th>
+                <th className="width_item">Total</th>
+                <th className="width_item">Status</th>
               </tr>
-              {orders}
+              {this.state.orders.length > 0 ? orders : <tr><td colSpan="6">No data</td></tr>}
             </tbody>
           </table>
         </div>
         {this.state.order ?
           <div className="align-center">
             <h2 className="text-center">ORDER DETAIL</h2>
-            <table className="datatable" border="1">
+            <table striped bordered hover className="datatable" border="1">
               <tbody>
                 <tr className="datatable">
-                  <th>No.</th>
-                  <th>Prod.ID</th>
-                  <th>Prod.name</th>
-                  <th>Image</th>
-                  <th>Author</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Amount</th>
+                  <th className="width_item">No.</th>
+                  <th className="width_item">Prod.ID</th>
+                  <th className="width_item">Prod.name</th>
+                  <th className="width_item">Image</th>
+                  <th className="width_item">Author</th>
+                  <th className="width_item">Price</th>
+                  <th className="width_item">Quantity</th>
+                  <th className="width_item">Amount</th>
                 </tr>
                 {items}
               </tbody>
