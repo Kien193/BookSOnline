@@ -135,8 +135,8 @@ class ProductDetail extends Component {
     const price = parseInt(this.state.txtPrice);
     const category = this.state.cmbCategory;
     const image = this.state.imgProduct.replace(/^data:image\/[a-z]+;base64,/, ''); // remove "data:image/...;base64,"
-    if (name && price && category && image) {
-      const prod = { name: name, author: author,price: price, category: category, image: image };
+    if (name && author && price && category && image) {
+      const prod = { name: name, author: author, price: price, category: category, image: image };
       this.apiPostProduct(prod);
     } else {
       //alert('Please input name and price and category and image');
@@ -156,7 +156,7 @@ class ProductDetail extends Component {
     const price = parseInt(this.state.txtPrice);
     const category = this.state.cmbCategory;
     const image = this.state.imgProduct.replace(/^data:image\/[a-z]+;base64,/, ''); // remove "data:image/...;base64,"
-    if (id && name && price && category && image) {
+    if (id && name && author && price && category && image) {
       const prod = { name: name, author: author, price: price, category: category, image: image };
       this.apiPutProduct(id, prod);
     } else {
