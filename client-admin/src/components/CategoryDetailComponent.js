@@ -14,9 +14,9 @@ class CategoryDetail extends Component {
   }
   render() {
     return (
-      <div className="float-right">
+      <div className="text-center">
         <h2 className="text-center">CATEGORY DETAIL</h2>
-        <form>
+        {/* <form className='container align-center'>
           <table>
             <tbody>
               <tr>
@@ -37,6 +37,32 @@ class CategoryDetail extends Component {
               </tr>
             </tbody>
           </table>
+        </form> */}
+        <form>
+          <div className="form-group mb-2">
+            <label>ID</label>
+              <input
+                type="text"
+                value={this.state.txtID}
+                className="form-control"
+                onChange={(e) => { this.setState({ txtID: e.target.value }) }}
+                readOnly={true}
+              />
+          </div>
+          <div className="form-group mb-2">
+             <label>Name</label>
+             <input
+                type="text"    
+                value={this.state.txtName}
+                className="form-control"
+                onChange={(e) => { this.setState({ txtName: e.target.value }) }}
+              />
+          </div>
+          <td>
+            <input className='mr-3 mt-2 btn btn-primary' style={{margin: "10px 130px 0 0", width:"100px"}} type="submit" value="ADD" onClick={(e) => this.btnAddClick(e)} />
+            <input className='mr-3 mt-2 btn btn-primary' style={{margin: "10px 118px 0 0", width:"100px"}} type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
+            <input className='mr-3 mt-2 btn btn-primary' style={{margin: "10px 0 0", width:"100px"}} type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
+          </td>
         </form>
       </div>
     );

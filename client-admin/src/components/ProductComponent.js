@@ -36,12 +36,38 @@ class Product extends Component {
       }
     });
     return (
-      <div>
-        <div className="float-left">
-          <h2 className="text-center">PRODUCT LIST</h2>
-          <table className="datatable" border="1">
-            <tbody>
-              <tr className="datatable">
+      // <div>
+      //   <div className="float-left">
+      //     <h2 className="text-center">PRODUCT LIST</h2>
+      //     <table className="datatable" border="1">
+      //       <tbody>
+      //         <tr className="datatable">
+      //           <th>ID</th>
+      //           <th>Name</th>
+      //           {/* add author */}
+      //           <th>Author</th>
+      //           <th>Price</th>
+      //           <th>Creation date</th>
+      //           <th>Category</th>
+      //           <th>Image</th>
+      //         </tr>
+      //         {prods}
+      //         <tr>
+      //           <td colSpan="6">{pagination}</td>
+      //         </tr>
+      //       </tbody>
+      //     </table>
+      //   </div>
+      //   <div className="inline" />
+      //     <ProductDetail item={this.state.itemSelected} curPage={this.state.curPage} updateProducts={this.updateProducts} />
+      //   <div className="float-clear" />
+      // </div>
+      <div className="container">
+        <div className="container row mt-5">
+          <h2 className="text-center">CATEGORY LIST</h2>
+          <table className="table table-bordered">
+            <thead className="thead-dark datatable ">
+              <tr className='datatable'>
                 <th>ID</th>
                 <th>Name</th>
                 {/* add author */}
@@ -51,16 +77,16 @@ class Product extends Component {
                 <th>Category</th>
                 <th>Image</th>
               </tr>
-              {prods}
-              <tr>
-                <td colSpan="6">{pagination}</td>
-              </tr>
-            </tbody>
-          </table>
+            </thead>
+            <tbody style={{cursor: 'pointer'}}>{prods}</tbody>
+            <tr>
+              <td colSpan="6">{pagination}</td>
+            </tr>
+          </table>      
         </div>
-        <div className="inline" />
+        <div className="container row mt-5">
           <ProductDetail item={this.state.itemSelected} curPage={this.state.curPage} updateProducts={this.updateProducts} />
-        <div className="float-clear" />
+        </div>
       </div>
     );
   }
