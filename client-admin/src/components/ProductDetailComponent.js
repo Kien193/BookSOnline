@@ -26,6 +26,7 @@ class ProductDetail extends Component {
       }
     });
     return (
+      //ĐỤ MÁ NHỚ LÀM CÁI NÀY NHÀ KIÊN dựa trên CategoryDetailComponent.js
       <div className="float-right">
         <h2 className="text-center">PRODUCT DETAIL</h2>
         <form>

@@ -22,23 +22,22 @@ class Category extends Component {
       );
     });
     return (
-      <div>
-        <div className="float-left">
+      <div className="container">
+        <div className="container row mt-5">
           <h2 className="text-center">CATEGORY LIST</h2>
-          <table className="datatable" border="1">
-            <tbody>
-              <tr className="datatable">
+          <table className="table table-bordered">
+            <thead className="thead-dark datatable ">
+              <tr className='datatable'>
                 <th>ID</th>
                 <th>Name</th>
               </tr>
-              {cates}
-            </tbody>
-          </table>
+            </thead>
+            <tbody style={{cursor: 'pointer'}}>{cates}</tbody>
+          </table>      
         </div>
-        <div className="inline" />
-          {/* <CategoryDetail item={this.state.itemSelected} /> */}
+        <div className="container row mt-5">
           <CategoryDetail item={this.state.itemSelected} updateCategories={this.updateCategories} />
-        <div className="float-clear" />
+        </div>
       </div>
     );
   }
