@@ -60,8 +60,8 @@ class CategoryDetail extends Component {
           </div>
           <td>
             <input className='mr-3 mt-2 btn btn-primary' style={{margin: "10px 130px 0 0", width:"100px"}} type="submit" value="ADD" onClick={(e) => this.btnAddClick(e)} />
-            <input className='mr-3 mt-2 btn btn-primary' style={{margin: "10px 118px 0 0", width:"100px"}} type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
-            <input className='mr-3 mt-2 btn btn-primary' style={{margin: "10px 0 0", width:"100px"}} type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
+            <input className='mr-3 mt-2 btn btn-success' style={{margin: "10px 118px 0 0", width:"100px"}} type="submit" value="UPDATE" onClick={(e) => this.btnUpdateClick(e)} />
+            <input className='mr-3 mt-2 btn btn-danger' style={{margin: "10px 0 0", width:"100px"}} type="submit" value="DELETE" onClick={(e) => this.btnDeleteClick(e)} />
           </td>
         </form>
       </div>
@@ -73,7 +73,7 @@ class CategoryDetail extends Component {
     }
   }
   // event-handlers
-  //Sự kiện thêm danh mục
+//Sự kiện thêm danh mục
   btnAddClick(e) {
     e.preventDefault();
     const name = this.state.txtName;

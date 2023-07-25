@@ -25,9 +25,11 @@ class Customer extends Component {
           <td>{item.active}</td>
           <td>
             {item.active === 0 ?
-              <span className="link" onClick={() => this.lnkEmailClick(item)}>EMAIL</span>
+              <input className='btn btn-primary' value="EMAIL" onClick={() => this.lnkEmailClick(item)}/>
               :
-              <span className="link" onClick={() => this.lnkDeactiveClick(item)}>DEACTIVE</span>}
+              <input className='btn btn-danger' value="DEACTIVE" onClick={() => this.lnkDeactiveClick(item)}/>
+            }
+
           </td>
         </tr>
       );
@@ -60,10 +62,10 @@ class Customer extends Component {
       });
     }
     return (
-      <div>
-        <div className="align-center">
+      <div className='container'>
+        <div className="align-center container row mt-5">
           <h2 className="text-center">CUSTOMER LIST</h2>
-          <table className="datatable" border="1">
+          <table className="table table-bordered" border="1">
             <tbody>
               <tr className="datatable">
                 <th>ID</th>
@@ -82,7 +84,7 @@ class Customer extends Component {
         {this.state.orders.length > 0 ?
           <div className="align-center">
             <h2 className="text-center">ORDER LIST</h2>
-            <table className="datatable" border="1">
+            <table className="table table-bordered" border="1">
               <tbody>
                 <tr className="datatable">
                   <th>ID</th>
@@ -100,7 +102,7 @@ class Customer extends Component {
         {this.state.order ?
           <div className="align-center">
             <h2 className="text-center">ORDER DETAIL</h2>
-            <table className="datatable" border="1">
+            <table className="table table-bordered" border="1">
               <tbody>
                 <tr className="datatable">
                   <th>No.</th>

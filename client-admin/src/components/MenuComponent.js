@@ -6,6 +6,7 @@ import { GrHomeRounded, GrLogout } from 'react-icons/gr';
 import { TbCategory } from 'react-icons/tb';
 import { BsNewspaper } from 'react-icons/bs';
 import { BiUserCircle, BiChevronsRight } from 'react-icons/bi';
+import { MdOutlineProductionQuantityLimits } from 'react-icons/md'
 class Menu extends Component {
   static contextType = MyContext; // using this.context to access global state
   constructor(props) {
@@ -64,7 +65,7 @@ class Menu extends Component {
               </li>
               <li className="nav-link">
                 <Link to='/admin/product'>
-                  <i className='icon'><TbCategory /></i>
+                  <i className='icon'><MdOutlineProductionQuantityLimits /></i>
                   <span className='text nav-text'>Product</span>
                 </Link>
               </li>
