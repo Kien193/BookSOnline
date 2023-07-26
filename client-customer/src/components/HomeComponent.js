@@ -37,25 +37,25 @@ class Home extends Component {
         </div>
       );
     });
-    // const hotprods = this.state.hotprods.map((item) => {
-    //   return (
-    //     <div key={item._id} className="inline mx-5 ">
-    //       <Card>
-    //         <Card.Img variant="top" src={"data:image/jpg;base64," + item.image} width="300px" height="300px" alt="" />
-    //         <Card.Body>
-    //           <Card.Title className="text-center">{item.name}</Card.Title>
-    //           <Card.Text className="text-center ">{item.author}</Card.Text>
-    //           <Card.Text className="text-center">Price: {item.price}</Card.Text>
-    //         </Card.Body>
-    //         <Card.Footer className="text-center bg-white border-0 mb-4">
-    //           <Link to={'/product/' + item._id}>
-    //             <Button variant="outline-dark">Detail</Button>
-    //           </Link>
-    //         </Card.Footer>
-    //       </Card>
-    //     </div>
-    //   );
-    // });
+    const hotprods = this.state.hotprods.map((item) => {
+      return (
+        <div key={item._id} className="inline mx-5 ">
+          <Card>
+            <Card.Img variant="top" src={"data:image/jpg;base64," + item.image} width="300px" height="300px" alt="" />
+            <Card.Body>
+              <Card.Title className="text-center">{item.name}</Card.Title>
+              <Card.Text className="text-center ">{item.author}</Card.Text>
+              <Card.Text className="text-center">Price: {item.price}</Card.Text>
+            </Card.Body>
+            <Card.Footer className="text-center bg-white border-0 mb-4">
+              <Link to={'/product/' + item._id}>
+                <Button variant="outline-dark">Detail</Button>
+              </Link>
+            </Card.Footer>
+          </Card>
+        </div>
+      );
+    });
     return (
       <div className=''>
         <div className="align-center">
@@ -65,8 +65,8 @@ class Home extends Component {
         </div>
         {this.state.hotprods.length > 0 ?
           <div className="align-center">
-            {/* <h2 className="text-center mt-2">HOT PRODUCTS</h2> */}
-            {/* {hotprods} */}
+            <h2 className="text-center mt-2">HOT PRODUCTS</h2>
+            {hotprods}
           </div>
           : <div />}
       </div>
