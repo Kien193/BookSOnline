@@ -1,8 +1,3 @@
-# ShoppeClone setup MyConstants.js
-    DB_SERVER: 'link database'
-    DB_USER: 'account name'
-    DB_PASS: 'account password'
-    DB_DATABASE: 'database name'
 # Gmail mail service
     EMAIL_USER: 'put your email here'
     EMAIL_PASS: 'password'
